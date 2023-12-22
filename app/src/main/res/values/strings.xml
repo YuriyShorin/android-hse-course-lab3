@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">android-hse-course-lab3</string>
+
+    <string name="queryHint">topic to search…</string>
+    <string name="search">search</string>
+    <string name="magnifier">magnifier</string>
+    <string name="results_found">Results found: %1$d</string>
+    <string name="link_to_source">Link to source: %1$s</string>
+
+    <string name="settings">settings</string>
+    <string name="favorite_topic">favorite topic</string>
+    <string name="back">back</string>
+
+    <string name="storage_key">STORAGE</string>
+    <string name="favorite_topic_key">FAVORITE_TOPIC</string>
+    <string name="language_key">LANGUAGE</string>
+
+    <string-array name="languages_array">
+        <item>English</item>
+        <item>Russian</item>
+    </string-array>
+</resources>
