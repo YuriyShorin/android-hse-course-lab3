@@ -42,7 +42,7 @@ class MainActivity: AppCompatActivity() {
         linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
 
         binding.newsRecyclerView.layoutManager = linearLayoutManager
-        binding.newsRecyclerView.adapter =NewsAdapter(ArrayList())
+        binding.newsRecyclerView.adapter = NewsAdapter(ArrayList())
 
         sharedPreferences =
             applicationContext.getSharedPreferences(
@@ -89,7 +89,7 @@ class MainActivity: AppCompatActivity() {
         val newsDataApiService: NewsDataApiService = NewsDataApiService.create()
         newsDataApiService
             .getNewsData(
-                "pub_34302aaf1c1101da62f408fed4dc9a581b91b", query, languageAbbreviation
+                "pub_343028294067ddc0d6331f7201aec298b1658", query, languageAbbreviation
             )
             .enqueue(object : Callback<NewsData> {
 
@@ -104,12 +104,12 @@ class MainActivity: AppCompatActivity() {
                     if (newsData?.news?.size == 0) {
                         binding.resultsFoundTextView.text =
                             getString(R.string.results_found, newsData.news.size)
+                        binding.newsRecyclerView.adapter = NewsAdapter(ArrayList())
                         binding.resultsFoundTextView.visibility = View.VISIBLE
                     } else {
+                        binding.newsRecyclerView.adapter = newsData?.news?.let { NewsAdapter(it) }
                         binding.resultsFoundTextView.visibility = View.INVISIBLE
                     }
-
-                    binding.newsRecyclerView.adapter = newsData?.news?.let { NewsAdapter(it) }
                 }
 
                 override fun onFailure(call: Call<NewsData>, t: Throwable) {

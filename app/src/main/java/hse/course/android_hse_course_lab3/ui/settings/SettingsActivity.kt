@@ -7,12 +7,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.Spinner
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
+
 import hse.course.android_hse_course_lab3.R
-import hse.course.android_hse_course_lab3.databinding.MainActivityLayoutBinding
 import hse.course.android_hse_course_lab3.databinding.SettingsActivityLayoutBinding
 import hse.course.android_hse_course_lab3.utils.Languages
 import hse.course.android_hse_course_lab3.ui.MainActivity
@@ -30,10 +28,11 @@ class SettingsActivity: AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent(this, MainActivity::class.java)
         when (item.itemId) {
             android.R.id.home -> {
                 saveChanges()
-                finish()
+                startActivity(intent)
                 return true
             }
         }
@@ -46,7 +45,7 @@ class SettingsActivity: AppCompatActivity() {
         supportActionBar?.show()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         onBackPressedDispatcher.addCallback(this) {
             saveChanges()
             startActivity(intent)
